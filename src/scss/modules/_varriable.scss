@@ -1,0 +1,85 @@
+$main-color: #fff;
+$purple: #7c6afa;
+$pink: #df5950;
+$gray: #333333;
+$dark: #121212;
+$gradient-purple: linear-gradient(94.26deg, #c89afc 9.51%, #7c6afa 90.23%);
+$gradient-dark-pink: linear-gradient(94.78deg, #df5950 11.19%, #451046 93.72%);
+
+//----MIXINS------------------------------
+@mixin button($bg) {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 44px;
+  padding: 5px 30px;
+  border-radius: 50px;
+  background: $bg;
+  overflow: hidden;
+  z-index: 1;
+
+  @media (max-width: 650px) {
+    min-height: 35px;
+    padding: 3px 15px;
+    font-size: 14px;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: #000;
+    opacity: 0;
+    transition: all 0.22s ease;
+    // z-index: -1;
+  }
+  &:hover::before {
+    opacity: 0.2;
+  }
+}
+
+@mixin title($mb) {
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 140%;
+  margin-bottom: $mb;
+}
+
+@mixin padding {
+  @media (max-width: 1024px) {
+    padding-top: 100px;
+  }
+  @media (max-width: 768px) {
+    padding-top: 50px;
+  }
+  @media (max-width: 425px) {
+    padding-top: 20px;
+  }
+}
+
+@mixin titleBgLeft {
+  padding-left: 2.93em;
+  background-size: 2.54em;
+  min-height: 2.54em;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+
+  @media (max-width: 1024px) {
+    margin-bottom: 30px;
+  }
+  @media (max-width: 768px) {
+    padding-left: 2.39em;
+    background-size: 1.8em;
+  }
+  @media (max-width: 425px) {
+    margin-bottom: 10px;
+    padding-left: 2.39em;
+    min-height: 2em;
+    background-size: 2em;
+  }
+}

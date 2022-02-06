@@ -1,0 +1,141 @@
+doctype html
+include html/data.pug
+
+html(lang='ru')
+  include html/head.pug
+
+  body 
+  .wrapper 
+    include html/header.pug
+
+    //-----PAGE---------------------------------------
+    main.page 
+      //----MAIN-BLOCK------------------------------------
+      #home.page__main-block.main-block
+        .main-block__image._ibg
+          img(src='@img/main/bg.jpg', alt='computer')
+        .main-block__container._container 
+          .main-block__body
+            h1.main-block__title Первый курс<br> по компьютерной сборке
+
+            .main-block__content
+              .main-block__time.main-time
+                p#day.main-time__value 00
+                p.main-time__text Дней
+              .main-block__time.main-time
+                p#hour.main-time__value 00
+                p.main-time__text Часов
+              .main-block__time.main-time
+                p#minute.main-time__value 00
+                p.main-time__text Минут
+              .main-block__time.main-time
+                p#second.main-time__value 00
+                p.main-time__text Секунд
+
+        .main-block__course.course
+          .course__container._container 
+            .course__body
+              button.course__btn Заказать курс
+
+              .course__pupils.pupils
+                .pupils__block 
+                  p.pupils__text Учеников всего:
+                  p.pupils__value 200
+                .pupils__block 
+                  p.pupils__text Успешно закончили курс:
+                  p.pupils__value 190
+
+              .course__earned.earned
+                .earned__content 
+                  .earned__text Заработано учениками:
+                  .earned__value 400 000₽
+
+                .earned__progress 
+                .earned__min 0
+                .earned__max 1 000 000₽
+
+      //----ABOUT------------------------------------------
+      section.page__about.about
+        .about__container._container 
+          .about__body 
+            .about__image 
+              img(src='@img/about/computer.png', alt='computer')
+
+            .about__content 
+              h2.about__title.title= about.title
+              .about__text.text= about.text
+
+      //----QUICK-START--------------------------------------
+      section#courses.page__quick-start.quick-start
+        .quick-start__container._container 
+          .quick-start__title.title Быстрый старт
+          .quick-start__subtitle.text Больше 90% учеников прошли полный курс и смогли собрать свой первый компьютер
+          .quick-start__body 
+            each obj in quickStart
+              .quick-start__item
+                .quick-start__item-title= obj.progress === 25 ? 'Итог' : obj.progress + '%'
+                .quick-start__progress(class='quick-start__progress' + obj.progress)
+                .quick-start__text= obj.text
+
+      //----ADVENTAGES--------------------------------------
+      section.page__adventages.adventages
+        .adventages__container._container 
+          .adventages__title.title Получите профессию прямо сейчас
+          .adventages__body 
+            each obj, i in adventages
+              - let a = i + 1
+              .adventages__item(class='adventages__item' + a)
+                .adventages__item-image
+                  img(src=obj.image, alt='icon')
+                .adventages__item-title!= obj.title
+                .adventages__item-text.text= obj.text
+
+      //----PARTNERS--------------------------------------
+      section.page__partners.partners
+        .partners__container._container 
+          .partners__title.title Партнеры - топовые бренды
+          .partners__body 
+            .partners__item
+              img(src='@img/partners/msi.svg', alt='msi')
+            .partners__item
+              img(src='@img/partners/msi.svg', alt='msi')
+            .partners__item
+              img(src='@img/partners/msi.svg', alt='msi')
+            .partners__item
+              img(src='@img/partners/msi.svg', alt='msi')
+            .partners__item
+              img(src='@img/partners/msi.svg', alt='msi')
+            .partners__item
+              img(src='@img/partners/msi.svg', alt='msi')
+            .partners__item
+              img(src='@img/partners/msi.svg', alt='msi')
+            .partners__item
+              img(src='@img/partners/msi.svg', alt='msi')
+
+      //----CURRICULUM--------------------------------------
+      section#schedule.page__curriculum.curriculum
+        .curriculum__container._container 
+          .curriculum__title.title Программа обучения
+          .curriculum__subtitle.text Больше 90% учеников прошли полный курс и смогли<br> собрать свой первый компьютер
+          .curriculum__body 
+            each obj, i in curriculum
+              - let a = i + 1
+              .curriculum__item.item-curriculum(class='curriculum__item' + a)
+                p.item-curriculum__date= obj.date
+                p.item-curriculum__text= obj.text
+
+      //----TEACHERS--------------------------------------
+      section#teachers.page__teachers.teachers
+        .teachers__container._container 
+          .teachers__title.title Ваши преподаватели
+          .teachers__body.teachers-item
+            each obj in teachers
+              .teachers-item__image
+                img(src=obj.image, alt='teacher')
+              h3.teachers-item__name= obj.name
+              p.teachers-item__text.text= obj.text
+              button.teachers-item__btn Биография
+
+    include html/footer.pug
+
+    script(src='js/app.min.js') 
